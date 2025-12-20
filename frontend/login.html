@@ -59,7 +59,7 @@
             if (user.email === email && user.password === password) {
                 showAlert('Login successful! Redirecting...', 'success');
                 setTimeout(() => {
-                    window.location.href = 'dashboard.html';
+                    window.location.href = 'user-dashboard.html';
                 }, 1500);
             } else {
                 showAlert('Invalid email or password!', 'error');
