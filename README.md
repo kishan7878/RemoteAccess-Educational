@@ -1,87 +1,94 @@
-# 🔐 RemoteAccess Educational Tool
+# 🔐 RemoteAccess Educational Tool - Advanced Edition
 
-**A consent-based device management platform for learning remote access technologies**
+**A consent-based, educational remote device management platform with 60+ advanced features**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-16+-green.svg)](https://nodejs.org/)
 [![Android](https://img.shields.io/badge/Android-7.0+-blue.svg)](https://www.android.com/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-4.4+-brightgreen.svg)](https://www.mongodb.com/)
+[![Features](https://img.shields.io/badge/Features-60+-red.svg)](FEATURES_COMPLETE.md)
 
 ---
 
-## ⚠️ Legal Disclaimer
+## ⚠️ EDUCATIONAL PURPOSE ONLY
 
-**FOR EDUCATIONAL PURPOSES ONLY**
+**This is an ADVANCED educational tool demonstrating remote access technologies with FULL USER CONSENT.**
 
-### ✅ Legal Use Cases:
-- Personal device management (your own devices)
-- Parental control (with proper consent)
-- Learning network programming & Android development
-- Security research in controlled environments
+### ✅ Legal & Ethical Use:
+- ✅ Personal device management (your own devices)
+- ✅ Parental control (with child's knowledge & consent)
+- ✅ Educational learning and security research
+- ✅ Authorized device monitoring
 
-### ❌ Illegal Uses:
-- Unauthorized device access
-- Privacy invasion
-- Data theft or surveillance without consent
-- Any malicious activities
+### ❌ Illegal & Prohibited:
+- ❌ Unauthorized device access
+- ❌ Privacy invasion or stalking
+- ❌ Data theft or surveillance without consent
+- ❌ Any malicious activities
 
-**Users are solely responsible for compliance with local laws.**
-
----
-
-## 🎯 What is This?
-
-RemoteAccess Educational is a **full-stack remote device management system** that demonstrates:
-
-- **Backend Development:** Node.js + Express + MongoDB
-- **Real-time Communication:** Socket.io WebSockets
-- **Frontend Development:** Responsive web dashboard
-- **Android Development:** Native Java app with services
-- **Security Concepts:** JWT auth, encryption, consent mechanisms
-- **API Design:** RESTful endpoints with proper authentication
-
-Perfect for students learning:
-- Client-server architecture
-- Real-time applications
-- Mobile app development
-- Database management
-- Security best practices
+**Users are solely responsible for legal compliance. All features require explicit user consent.**
 
 ---
 
-## ✨ Features
+## 🚀 Advanced Features (60+)
 
-### 🖥️ Web Admin Panel
-- User authentication (register/login)
-- Real-time device monitoring
-- Device management dashboard
-- APK builder with permission selector
-- Activity logs viewer
-- Responsive Bootstrap 5 UI
+### **📱 Device Control & Monitoring**
+- ✅ Real-time screen monitoring (MediaProjection API)
+- ✅ Educational keylogger (Accessibility Service)
+- ✅ Audio recording with microphone
+- ✅ Device information & system stats
+- ✅ Battery, network, storage monitoring
+- ✅ GPS location tracking
+- ✅ Clipboard access
+- ✅ Vibration & sound control
 
-### 📱 Android Application
-- **Consent-based activation** (ethical design)
-- Permission request system
-- Background foreground service
-- Socket.io real-time connection
-- Auto-start on device boot
-- Device information collection
-- Secure preference storage
+### **💬 Communication Access**
+- ✅ SMS read/send/delete
+- ✅ Call logs with statistics
+- ✅ Contact management
+- ✅ Phone number filtering
 
-### 🔧 APK Builder
-- Custom app name & package
-- Permission selector (14+ permissions)
-- Server URL configuration
-- Build configuration generator
+### **📂 File System Operations**
+- ✅ Browse directories
+- ✅ Read/write files (text & binary)
+- ✅ Copy/move/delete files
+- ✅ Create directories
+- ✅ File search
+- ✅ Installed apps list
 
-### 🔐 Security Features
-- JWT token authentication
-- Password hashing (bcrypt)
-- Input validation & sanitization
-- Rate limiting
-- CORS protection
-- Activity logging
-- Consent mechanism
+### **🎤 Media Capabilities**
+- ✅ Audio recording & playback
+- ✅ Camera access (front/back)
+- ✅ Screenshot capture
+- ✅ Screen recording
+
+### **🔐 Security & Privacy**
+- ✅ Consent-based activation
+- ✅ Runtime permission requests
+- ✅ Visible notifications
+- ✅ Easy revocation
+- ✅ Activity logging
+- ✅ Transparent operation
+
+**[View Complete Features List →](FEATURES_COMPLETE.md)**
+
+---
+
+## 🎯 What Makes This Advanced?
+
+### **Real RAT Capabilities (Ethical Implementation):**
+
+| Feature | Commercial RAT | This Project |
+|---------|---------------|--------------|
+| Screen Monitoring | ✅ | ✅ (with consent) |
+| Keylogging | ✅ | ✅ (educational) |
+| Audio Recording | ✅ | ✅ (with permission) |
+| File Access | ✅ | ✅ (authorized) |
+| SMS/Calls | ✅ | ✅ (user approved) |
+| Location | ✅ | ✅ (GPS permission) |
+| **User Consent** | ❌ | ✅ **REQUIRED** |
+| **Visible** | ❌ | ✅ **ALWAYS** |
+| **Legal** | ❌ | ✅ **COMPLIANT** |
 
 ---
 
@@ -99,86 +106,84 @@ Perfect for students learning:
                                      ▼
                             ┌─────────────────┐
                             │   Android App   │
-                            │  (Java/Kotlin)  │
-                            │  + Foreground   │
-                            │    Service      │
+                            │  ────────────   │
+                            │  • Keylogger    │
+                            │  • Screen Mon.  │
+                            │  • Audio Rec.   │
+                            │  • File Access  │
+                            │  • SMS/Calls    │
+                            │  • Location     │
                             └─────────────────┘
 ```
 
 ---
 
-## 📦 Project Structure
+## 📦 Complete Feature Set
 
+### **1. Device Information (10 commands)**
+```javascript
+ping, get_device_info, get_battery_info, get_network_info, 
+get_system_info, get_location, vibrate, play_sound, 
+get_clipboard, set_clipboard
 ```
-RemoteAccess-Educational/
-├── backend/                 # Node.js server
-│   ├── server.js           # Main server file
-│   ├── models/             # MongoDB models
-│   │   ├── User.js
-│   │   ├── Device.js
-│   │   └── ActivityLog.js
-│   ├── routes/             # API routes
-│   │   ├── auth.js
-│   │   ├── devices.js
-│   │   └── apk.js
-│   ├── middleware/         # Auth middleware
-│   └── package.json
-│
-├── frontend/               # Web dashboard
-│   ├── index.html
-│   ├── css/
-│   │   └── style.css
-│   └── js/
-│       └── app.js
-│
-├── android/                # Android app
-│   ├── app/
-│   │   ├── src/main/
-│   │   │   ├── java/com/remoteaccess/educational/
-│   │   │   │   ├── MainActivity.java
-│   │   │   │   ├── ConsentActivity.java
-│   │   │   │   ├── services/
-│   │   │   │   │   └── RemoteAccessService.java
-│   │   │   │   ├── network/
-│   │   │   │   │   └── SocketManager.java
-│   │   │   │   ├── utils/
-│   │   │   │   │   ├── DeviceInfo.java
-│   │   │   │   │   └── PreferenceManager.java
-│   │   │   │   └── receivers/
-│   │   │   │       └── BootReceiver.java
-│   │   │   ├── res/
-│   │   │   └── AndroidManifest.xml
-│   │   └── build.gradle
-│   ├── build.gradle
-│   └── settings.gradle
-│
-└── docs/                   # Documentation
-    ├── SETUP.md           # Setup guide
-    ├── API.md             # API documentation
-    ├── SECURITY.md        # Security best practices
-    └── FAQ.md             # Frequently asked questions
+
+### **2. SMS Management (4 commands)**
+```javascript
+get_all_sms, get_sms_from_number, send_sms, delete_sms
 ```
+
+### **3. Call Logs (4 commands)**
+```javascript
+get_all_call_logs, get_call_logs_by_type, 
+get_call_logs_from_number, get_call_statistics
+```
+
+### **4. Contacts (2 commands)**
+```javascript
+get_all_contacts, search_contacts
+```
+
+### **5. File Operations (10 commands)**
+```javascript
+list_files, read_file, write_file, delete_file, copy_file, 
+move_file, create_directory, get_file_info, search_files, 
+get_installed_apps
+```
+
+### **6. Screen Monitoring (2 commands)**
+```javascript
+start_screen_monitoring, capture_screenshot
+```
+
+### **7. Audio Recording (5 commands)**
+```javascript
+start_recording, stop_recording, get_recording_status, 
+list_recordings, delete_recording
+```
+
+### **8. Keylogger (3 commands)**
+```javascript
+enable_keylogger, get_keylogs, clear_logs
+```
+
+### **9. Camera (2 commands)**
+```javascript
+get_available_cameras, take_photo
+```
+
+**Total: 42+ Commands**
 
 ---
 
 ## 🚀 Quick Start
 
-### Prerequisites
-
-- **Node.js** 16+
-- **MongoDB** 4.4+
-- **Android Studio** (for Android development)
-- **JDK** 11+
-
-### 1. Clone Repository
-
+### **1. Clone Repository**
 ```bash
 git clone https://github.com/kishan7878/RemoteAccess-Educational.git
 cd RemoteAccess-Educational
 ```
 
-### 2. Setup Backend
-
+### **2. Backend Setup**
 ```bash
 cd backend
 npm install
@@ -187,148 +192,150 @@ cp .env.example .env
 npm start
 ```
 
-Server runs on `http://localhost:5000`
-
-### 3. Setup Frontend
-
+### **3. Frontend Setup**
 ```bash
 cd frontend
-# Open index.html in browser or use live server
+python3 -m http.server 3000
+# Or use Live Server
 ```
 
-Access at `http://localhost:3000`
-
-### 4. Build Android App
-
+### **4. Build Android APK**
 ```bash
 cd android
 ./gradlew assembleDebug
 ```
 
-APK location: `android/app/build/outputs/apk/debug/`
+**[Detailed Setup Guide →](docs/SETUP.md)**
 
 ---
 
 ## 📖 Documentation
 
-- **[Setup Guide](docs/SETUP.md)** - Complete installation instructions
-- **[API Documentation](docs/API.md)** - API endpoints reference
-- **[Security Guide](docs/SECURITY.md)** - Security best practices
-- **[FAQ](docs/FAQ.md)** - Frequently asked questions
-- **[Contributing](CONTRIBUTING.md)** - How to contribute
-- **[Changelog](CHANGELOG.md)** - Version history
+- **[Quick Start Guide](QUICKSTART.md)** - 10-minute setup
+- **[Complete Features](FEATURES_COMPLETE.md)** - All 60+ features
+- **[Advanced Features](docs/ADVANCED_FEATURES.md)** - Command reference
+- **[Setup Guide](docs/SETUP.md)** - Installation instructions
+- **[API Documentation](docs/API.md)** - API endpoints
+- **[Security Guide](docs/SECURITY.md)** - Best practices
+- **[FAQ](docs/FAQ.md)** - Common questions
+
+---
+
+## 🔐 Permission Requirements
+
+### **Android Permissions:**
+```xml
+<!-- Required -->
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+<!-- Advanced Features -->
+<uses-permission android:name="android.permission.READ_SMS" />
+<uses-permission android:name="android.permission.SEND_SMS" />
+<uses-permission android:name="android.permission.READ_CONTACTS" />
+<uses-permission android:name="android.permission.READ_CALL_LOG" />
+<uses-permission android:name="android.permission.CAMERA" />
+<uses-permission android:name="android.permission.RECORD_AUDIO" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+```
+
+### **Special Permissions:**
+- **Accessibility Service** - For keylogger (user enables manually)
+- **MediaProjection** - For screen monitoring (user approves dialog)
+
+---
+
+## 🎓 Educational Value
+
+### **Learn:**
+- ✅ Full-stack development (Node.js + Android)
+- ✅ Real-time communication (Socket.io)
+- ✅ Android advanced APIs (MediaProjection, Accessibility)
+- ✅ Permission handling & security
+- ✅ Database management (MongoDB)
+- ✅ RESTful API design
+- ✅ WebSocket implementation
+- ✅ Ethical hacking concepts
+
+### **Understand:**
+- ✅ How RATs work (ethically)
+- ✅ Android security model
+- ✅ Permission systems
+- ✅ Real-time monitoring
+- ✅ Client-server architecture
 
 ---
 
 ## 🔧 Tech Stack
 
-### Backend
-- **Node.js** - Runtime environment
-- **Express.js** - Web framework
-- **Socket.io** - Real-time communication
-- **MongoDB** - Database
-- **Mongoose** - ODM
-- **JWT** - Authentication
-- **bcrypt** - Password hashing
+### **Backend:**
+- Node.js + Express.js
+- Socket.io (real-time)
+- MongoDB + Mongoose
+- JWT authentication
+- bcrypt (password hashing)
 
-### Frontend
-- **HTML5/CSS3/JavaScript** - Core technologies
-- **Bootstrap 5** - UI framework
-- **Socket.io Client** - WebSocket client
+### **Frontend:**
+- HTML5/CSS3/JavaScript
+- Bootstrap 5
+- Socket.io Client
 
-### Android
-- **Java** - Programming language
-- **Retrofit** - HTTP client
-- **Socket.io Android** - WebSocket client
-- **WorkManager** - Background tasks
-- **Dexter** - Permission handling
-
----
-
-## 📱 Screenshots
-
-### Web Admin Panel
-- Login/Register interface
-- Device management dashboard
-- APK builder with permission selector
-- Real-time device monitoring
-
-### Android App
-- Consent screen with terms
-- Main activity with status
-- Permission request dialogs
-- Foreground service notification
-
-*(Add screenshots to `/screenshots` folder)*
+### **Android:**
+- Java
+- Socket.io Android
+- MediaProjection API
+- Accessibility Service
+- Camera2 API
+- MediaRecorder
 
 ---
 
-## 🎓 Learning Objectives
+## ⚠️ Important Disclaimers
 
-By studying this project, you'll learn:
+### **User Consent Required:**
+When installing, users see:
+```
+⚠️ EDUCATIONAL PURPOSE ONLY
 
-1. **Full-Stack Development**
-   - Backend API design
-   - Frontend development
-   - Database integration
+This application includes advanced monitoring:
+✓ Screen monitoring (requires permission)
+✓ Audio recording (requires permission)  
+✓ Keylogger (requires Accessibility Service)
+✓ File access (requires permission)
+✓ SMS/Call logs (requires permission)
 
-2. **Real-time Communication**
-   - WebSocket implementation
-   - Socket.io usage
-   - Event-driven architecture
+All features require explicit consent.
+You can revoke access anytime.
+```
 
-3. **Android Development**
-   - Native app development
-   - Background services
-   - Permission handling
-   - Broadcast receivers
+### **Visibility:**
+- ✅ App icon always visible
+- ✅ Foreground notification shown
+- ✅ Accessibility service visible in Settings
+- ✅ Screen recording notification
+- ✅ All permissions requested explicitly
 
-4. **Security Concepts**
-   - Authentication & authorization
-   - Data encryption
-   - Secure storage
-   - Input validation
-
-5. **Best Practices**
-   - Code organization
-   - Error handling
-   - Documentation
-   - Version control
-
----
-
-## 🔐 Security
-
-This project implements multiple security layers:
-
-- **Authentication:** JWT tokens with expiration
-- **Password Security:** bcrypt hashing
-- **Input Validation:** Sanitization & validation
-- **Rate Limiting:** Prevent brute force
-- **CORS:** Cross-origin protection
-- **Consent Mechanism:** Ethical design
-- **Activity Logging:** Audit trail
-
-See [SECURITY.md](docs/SECURITY.md) for detailed security practices.
+### **User Control:**
+- ✅ One-tap revoke access
+- ✅ Disable in Android Settings
+- ✅ Uninstall anytime
+- ✅ Clear all data
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for:
-
-- Code of conduct
-- Development process
-- How to submit pull requests
-- Coding standards
+Contributions welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ---
 
 ## 📝 License
 
-This project is licensed under the MIT License - see [LICENSE](LICENSE) file.
+MIT License - See [LICENSE](LICENSE)
 
-**Educational Use Disclaimer:** This software is for educational purposes only. Users are responsible for ensuring compliance with all applicable laws.
+**Educational Use Disclaimer:** For educational purposes only. Users responsible for legal compliance.
 
 ---
 
@@ -340,93 +347,82 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file.
 
 ---
 
-## 🙏 Acknowledgments
+## 🌟 Project Stats
 
-- Socket.io for real-time communication
-- Express.js community
-- MongoDB team
-- Bootstrap framework
-- Android developer community
-- All open-source contributors
-
----
-
-## 📊 Project Stats
-
-- **Total Files:** 40+
-- **Lines of Code:** 3000+
+- **Total Files:** 60+
+- **Lines of Code:** 8000+
+- **Features:** 60+
+- **Commands:** 42+
+- **Documentation Pages:** 10+
 - **Languages:** JavaScript, Java, HTML, CSS
-- **Documentation:** 5 comprehensive guides
-- **License:** MIT
 
 ---
 
-## 🗺️ Roadmap
+## 📊 Feature Comparison
 
-### Version 1.1 (Planned)
-- [ ] Enhanced command system
-- [ ] File transfer capabilities
-- [ ] Screenshot functionality
-- [ ] Location tracking
-- [ ] SMS management
+### **Basic vs Advanced:**
 
-### Version 1.2 (Planned)
-- [ ] Multi-language support
-- [ ] Dark mode
-- [ ] Advanced analytics
-- [ ] Export functionality
-
-### Version 2.0 (Future)
-- [ ] iOS support
-- [ ] Desktop clients
-- [ ] End-to-end encryption
-- [ ] Two-factor authentication
-
-See [CHANGELOG.md](CHANGELOG.md) for complete roadmap.
+| Feature Category | Basic | Advanced (This) |
+|-----------------|-------|-----------------|
+| Device Info | ✅ | ✅ |
+| SMS/Calls | ❌ | ✅ |
+| Contacts | ❌ | ✅ |
+| File Access | ❌ | ✅ |
+| Screen Monitor | ❌ | ✅ |
+| Keylogger | ❌ | ✅ |
+| Audio Record | ❌ | ✅ |
+| Camera | ❌ | ✅ |
 
 ---
 
-## ❓ FAQ
+## 🎯 Use Cases
 
-**Q: Is this legal?**  
-A: Yes, when used with proper consent on authorized devices.
+### **1. Personal Device Management**
+Monitor your own devices, backup data, remote access
 
-**Q: Can I use this in production?**  
-A: This is educational. For production, implement additional security measures.
+### **2. Parental Control**
+Monitor child's device with their knowledge and consent
 
-**Q: How do I report security issues?**  
-A: Email decentkishan78@gmail.com with [SECURITY] in subject.
+### **3. Security Research**
+Learn Android security, understand monitoring techniques
 
-See [FAQ.md](docs/FAQ.md) for more questions.
-
----
-
-## 📞 Support
-
-- **Documentation:** [docs/](docs/)
-- **Issues:** [GitHub Issues](https://github.com/kishan7878/RemoteAccess-Educational/issues)
-- **Email:** decentkishan78@gmail.com
+### **4. Educational Demonstrations**
+Teach cybersecurity, demonstrate RAT capabilities ethically
 
 ---
 
-## ⭐ Star History
+## 🚨 Legal Notice
 
-If you find this project helpful for learning, please consider giving it a star! ⭐
+**This tool demonstrates advanced remote access capabilities for EDUCATIONAL purposes.**
 
----
+- ✅ Use on devices you own
+- ✅ Use with explicit consent
+- ✅ Use for learning
+- ❌ Do NOT use for unauthorized access
+- ❌ Do NOT use for privacy invasion
+- ❌ Do NOT use for illegal activities
 
-## 📜 Disclaimer
-
-This tool is provided for **educational purposes only**. The developers assume no liability for misuse. Always:
-
-- Obtain proper consent
-- Follow local laws
-- Respect privacy
-- Use ethically
-
-**Remember: With great power comes great responsibility!** 🎓
+**Violation of these terms may result in criminal prosecution.**
 
 ---
 
-**Made with ❤️ for education and learning**
+## 📚 Additional Resources
 
+- [Android Permissions Guide](https://developer.android.com/guide/topics/permissions/overview)
+- [MediaProjection API](https://developer.android.com/reference/android/media/projection/MediaProjection)
+- [Accessibility Service](https://developer.android.com/guide/topics/ui/accessibility/service)
+- [Socket.io Documentation](https://socket.io/docs/)
+
+---
+
+## ⭐ Star This Project
+
+If you find this educational tool helpful, please give it a star! ⭐
+
+---
+
+**Made with ❤️ for education and ethical learning**
+
+**GitHub:** https://github.com/kishan7878/RemoteAccess-Educational
+
+**Remember: Use responsibly, ethically, and legally!** 🎓
